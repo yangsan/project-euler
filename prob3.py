@@ -45,6 +45,15 @@ def primegen():
         yield n
 
 
+def largestprimefactor2(number):
+    k = 2
+    while k <= number:
+        while number / k * k == number:
+            number = number / k
+        print k, number
+        k += 1
+    return k - 1
+
 if __name__ == "__main__":
     number = 600851475143
     #number = 13195
