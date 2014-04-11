@@ -29,7 +29,27 @@ def largestprimefactor1(number):
         counter += 1
     return counter - 1
 
+
+def primegen():
+    """
+    A generator to produce a prime number sequence.
+    """
+    primenumber = [2]
+    n = 2
+    while True:
+        n += 1
+        for i in primenumber:
+            if n % i == 0:
+                print "oyeah"
+                continue
+        yield n
+
+
 if __name__ == "__main__":
     number = 600851475143
     #number = 13195
-    print largestprimefactor1(number)
+    #print largestprimefactor1(number)
+    for i in primegen():
+        print i
+        if i > 10:
+            break
