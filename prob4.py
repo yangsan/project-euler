@@ -5,15 +5,30 @@ from the product of two 2-digit numbers is 9009 = 91 × 99.
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
-import sys
 
-
-def ifPalin(n):
+def isPalin(n):
+    n = str(n)
     if len(n) <= 1:
         return True
     if n[0] == n[-1]:
-        return True and ifPalin(n[1:-1])
+        return True and isPalin(n[1:-1])
     return False
 
+
+def largestPalin(digits):
+
+    upperbound = 10 ** digits - 1
+    lowerbound = 10 ** (digits - 1)
+
+    palin = []
+
+    for i in xrange(upperbound, lowerbound, -1):
+        for j in xrange(upperbound, lowerbound, -1):
+            if isPalin(i * j):
+                #print i * j
+                palin.append(i * j)
+    return sorted(palin)[-1]
+
 if __name__ == "__main__":
-    print ifPalin(sys.argv[1])
+    #print isPalin('101')
+    print largestPalin(3)
