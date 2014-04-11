@@ -50,7 +50,6 @@ def largestprimefactor2(number):
     while k <= number:
         while number / k * k == number:
             number = number / k
-        print k, number
         k += 1
     return k - 1
 
@@ -58,7 +57,3 @@ if __name__ == "__main__":
     number = 600851475143
     #number = 13195
     #print largestprimefactor1(number)
-    for i in primegen():
-        print i
-        if i > 10:
-            break
