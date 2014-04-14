@@ -23,7 +23,7 @@ def largestPalin(digits):
     palin = []
 
     for i in xrange(upperbound, lowerbound, -1):
-        for j in xrange(i, lowerbound, -1):
+        for j in xrange(i, lowerbound, -11):
             if isPalin(i * j):
                 #print i * j
                 palin.append(i * j)
