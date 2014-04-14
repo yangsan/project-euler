@@ -20,14 +20,14 @@ def largestPalin(digits):
     upperbound = 10 ** digits - 1
     lowerbound = 10 ** (digits - 1)
 
-    palin = []
+    palin = 0
 
     for i in xrange(upperbound, lowerbound, -1):
         for j in xrange(i, lowerbound, -11):
-            if isPalin(i * j):
-                #print i * j
-                palin.append(i * j)
-    return sorted(palin)[-1]
+            number = i * j
+            if isPalin(number) and number > palin:
+                palin = number
+    return palin
 
 if __name__ == "__main__":
     #print isPalin('101')
