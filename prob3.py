@@ -30,23 +30,6 @@ def largestprimefactor1(number):
     return counter - 1
 
 
-def primegen():
-    """
-    A generator to produce a prime number sequence.
-    """
-    primenumber = [2]
-    n = 3
-    while True:
-        n += 2
-        flag = False
-        for i in primenumber:
-            if n % i == 0:
-                flag = True
-                break
-        if flag:
-            yield n
-
-
 def largestprimefactor2(number):
     k = 2
     while k <= number:
@@ -55,7 +38,35 @@ def largestprimefactor2(number):
         k += 1
     return k - 1
 
+
+def primegen():
+    """
+    A generator to produce a prime number sequence.
+    """
+    primenumber = [2]
+    yield primenumber[-1]
+    n = 3
+    while True:
+        flag = True
+        for i in primenumber:
+            if n % i == 0:
+                flag = False
+                break
+        if flag:
+            primenumber.append(n)
+            yield n
+        n += 2
+
+
+def largestprimefactor3(number):
+    for prime in primegen():
+        if prime >= number:
+            return prime
+        while number % prime == 0:
+            number /= prime
+
+
 if __name__ == "__main__":
     number = 600851475143
     #number = 13195
-    #print largestprimefactor1(number)
+    print largestprimefactor3(number)
