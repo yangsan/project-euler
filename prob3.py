@@ -35,14 +35,16 @@ def primegen():
     A generator to produce a prime number sequence.
     """
     primenumber = [2]
-    n = 2
+    n = 3
     while True:
-        n += 1
+        n += 2
+        flag = False
         for i in primenumber:
             if n % i == 0:
-                print "oyeah"
-                continue
-        yield n
+                flag = True
+                break
+        if flag:
+            yield n
 
 
 def largestprimefactor2(number):
