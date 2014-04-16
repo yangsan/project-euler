@@ -54,9 +54,7 @@ def circular_of_a_number(number):
 def number_of_circular_primes_under(n):
     CircularPrimes = []
     PrimeNumbers = prime_gen_2(n)
-    #print "Got the prime list."
-    #for prime in PrimeNumbers:
-    for i, prime in enumerate(PrimeNumbers):
+    for prime in PrimeNumbers:
         if prime in CircularPrimes:
             continue
         else:
@@ -69,10 +67,8 @@ def number_of_circular_primes_under(n):
             if flag:
                 CircularOfNumber.append(prime)
                 CircularPrimes += CircularOfNumber
-        #print i/float(len(PrimeNumbers))
 
-    print CircularPrimes
-    print len(CircularPrimes)
+    return len(CircularPrimes) - 1 # CircularPrimes will have two 11.
 
 if __name__ == "__main__":
-    number_of_circular_primes_under(1000000)
+    print number_of_circular_primes_under(1000000)
