@@ -51,9 +51,18 @@ def circular_of_a_number(number):
     return CircularOfNumber
 
 
+def filter(number):
+    number = str(number)
+    lis = ['0', '2', '4', '5', '6', '8']
+    for i in lis:
+        if i in number:
+            return False
+    return True
+
+
 def number_of_circular_primes_under(n):
     CircularPrimes = []
-    PrimeNumbers = prime_gen_2(n)
+    PrimeNumbers = [a for a in prime_gen_2(n) if filter(a)]
     for prime in PrimeNumbers:
         if prime in CircularPrimes:
             continue
@@ -68,7 +77,7 @@ def number_of_circular_primes_under(n):
                 CircularOfNumber.append(prime)
                 CircularPrimes += CircularOfNumber
 
-    return len(CircularPrimes) - 1 # CircularPrimes will have two 11.
+    return len(CircularPrimes) + 1 # CircularPrimes will have two 11.
 
 if __name__ == "__main__":
     print number_of_circular_primes_under(1000000)
