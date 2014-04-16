@@ -39,7 +39,7 @@ def prime_gen_2(upperbound):
                 i += item
                 boolean[i] = 0
 
-    return [a for i, a in enumerate(number) if boolean[i]]
+    return [a for i, a in enumerate(number) if boolean[i] and filt(a)]
 
 
 def circular_of_a_number(number):
@@ -51,7 +51,7 @@ def circular_of_a_number(number):
     return CircularOfNumber
 
 
-def filter(number):
+def filt(number):
     number = str(number)
     lis = ['0', '2', '4', '5', '6', '8']
     for i in lis:
@@ -62,7 +62,7 @@ def filter(number):
 
 def number_of_circular_primes_under(n):
     CircularPrimes = []
-    PrimeNumbers = [a for a in prime_gen_2(n) if filter(a)]
+    PrimeNumbers = prime_gen_2(n)
     for prime in PrimeNumbers:
         if prime in CircularPrimes:
             continue
