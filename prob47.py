@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 The first two consecutive numbers to have two distinct prime factors are:
     14 = 2 × 7
@@ -20,12 +20,25 @@ def factorize(number):
             number = number / k
             Factors.append(k)
         k += 1
-    return Factors
+    return set(Factors)
 
 
 def first_n_consecutive_numbers(n):
-    pass
+    number = 1
+    while number < 1000000:
+        Factors = factorize(number)
+        if len(Factors) == n:
+            flag = True
+            for i in range(n - 1):
+                if len(factorize(number + i + 1)) != n:
+                    flag = False
+            if flag:
+                return number
+
+        number += 1
+        if number % 1000 == 0:
+            print number
 
 
 if __name__ == "__main__":
-    print factorize(646)
+    print first_n_consecutive_numbers(4)
