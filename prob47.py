@@ -12,6 +12,7 @@ What is the first of these numbers?
 """
 
 
+# version 1
 def factorize(number):
     Factors = []
     k = 2
@@ -56,5 +57,17 @@ def n_consecutive_numbers(number, margin, n):
         return len(factorize(number)) == n and\
             n_consecutive_numbers(number + 1, margin - 1, n)
 
+
+# version 2, found on forum
+def first_n_consecutive_numbers2(lim, n):
+    L = [0] * (lim + 1)
+    for i in xrange(2, lim / 2 + 1):
+        if L[i] == 0:
+            for j in range(i, lim + 1, i):
+                L[j] += 1
+    return ''.join(map(str, L)).index(''.join(map(str, [n] * n)))
+
+
 if __name__ == "__main__":
-    print first_n_consecutive_numbers_recursively(3)
+    #print first_n_consecutive_numbers_recursively2(4)
+    print first_n_consecutive_numbers2(1000000, 4)
