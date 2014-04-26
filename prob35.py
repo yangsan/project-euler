@@ -42,6 +42,18 @@ def prime_gen_2(upperbound):
     return [a for i, a in enumerate(number) if boolean[i] and filt(a)]
 
 
+def prime_gen_3(upperbound):
+    """
+    same as prime generator 2, only using one list.
+    """
+    l = [0] * (upperbound + 1)
+    for i in xrange(2, upperbound / 2 + 1):
+        if l[i] == 0:
+            for j in range(i + i, upperbound + 1, i):
+                l[j] = 1
+    return [i for i, a in enumerate(l) if a == 0][2:]
+
+
 def circular_of_a_number(number):
     number = str(number)
     CircularOfNumber = []
