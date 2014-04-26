@@ -40,5 +40,21 @@ def first_n_consecutive_numbers(n):
             print number
 
 
+def first_n_consecutive_numbers_recursively(n):
+    number = 1
+    while number < 1000000:
+        if n_consecutive_numbers(number, n, n):
+            return number
+        number += 1
+        #print number
+
+
+def n_consecutive_numbers(number, margin, n):
+    if margin == 1:
+        return len(factorize(number)) == n
+    else:
+        return len(factorize(number)) == n and\
+            n_consecutive_numbers(number + 1, margin - 1, n)
+
 if __name__ == "__main__":
-    print first_n_consecutive_numbers(4)
+    print first_n_consecutive_numbers_recursively(3)
