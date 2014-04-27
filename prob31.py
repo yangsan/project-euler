@@ -30,7 +30,6 @@ def coin():
                                 if item100 + item50 + item20 + item10\
                                         + item5 + item2 + i == 200:
                                     counter += 1
-                                    #print [i, i2, i5, i10, i20, i50, i100]
     return counter
 
 
@@ -51,11 +50,11 @@ def coin2():
                         while item5 >= 0:
                             item2 = item5
                             while item2 >= 0:
-                                item1 = item2
-                                while item1 >= 0:
-                                    item1 -= 1
-                                if item1 == -1:
-                                    counter += 1
+                                #item1 = item2
+                                #while item1 >= 0:
+                                    #item1 -= 1
+                                #if item1 == -1:
+                                counter += 1
                                 item2 -= 2
                             item5 -= 5
                         item10 -= 10
@@ -70,12 +69,7 @@ def coin2():
 def coin3(l=[200, 100, 50, 20, 10, 5, 2, 1], target=200):
     counter = 0
     if len(l) == 1:
-        while target >= 0:
-            target -= l[0]
-        if target + l[0] == 0:
-            return 1
-        else:
-            return 0
+        return 1
     while target >= 0:
         counter += coin3(l[1:], target)
         target -= l[0]
@@ -83,4 +77,4 @@ def coin3(l=[200, 100, 50, 20, 10, 5, 2, 1], target=200):
 
 
 if __name__ == "__main__":
-    print coin3()
+    print coin2()
