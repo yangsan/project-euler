@@ -33,5 +33,54 @@ def coin():
                                     #print [i, i2, i5, i10, i20, i50, i100]
     return counter
 
+
+# brute force 2
+def coin2():
+    counter = 0
+    item200 = 200
+    while item200 >= 0:
+        item100 = item200
+        while item100 >= 0:
+            item50 = item100
+            while item50 >= 0:
+                item20 = item50
+                while item20 >= 0:
+                    item10 = item20
+                    while item10 >= 0:
+                        item5 = item10
+                        while item5 >= 0:
+                            item2 = item5
+                            while item2 >= 0:
+                                item1 = item2
+                                while item1 >= 0:
+                                    item1 -= 1
+                                if item1 == -1:
+                                    counter += 1
+                                item2 -= 2
+                            item5 -= 5
+                        item10 -= 10
+                    item20 -= 20
+                item50 -= 50
+            item100 -= 100
+        item200 -= 200
+    return counter
+
+
+# recursion
+def coin3(l=[200, 100, 50, 20, 10, 5, 2, 1], target=200):
+    counter = 0
+    if len(l) == 1:
+        while target >= 0:
+            target -= l[0]
+        if target + l[0] == 0:
+            return 1
+        else:
+            return 0
+    while target >= 0:
+        counter += coin3(l[1:], target)
+        target -= l[0]
+    return counter
+
+
 if __name__ == "__main__":
-    print coin()
+    print coin3()
